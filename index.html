@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>Nice argument</title>
-    <link rel="icon" href="./gktawu.png" />
+    <link rel="icon" href="https://imgdb.jstnlt.my.id/img/gktawu.png" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
 
@@ -159,14 +159,12 @@
         <br />
         We will not store ip and other information about you (which can be
         obtained from ip) in our database (yes because this is 100% normal
-        static html website.)
+        static html website.). You can see the <a href="https://github.com/JastinXyz/good-argument" target="_blank">SOURCE CODE</a>
       </p>
     </div>
 
     <div style="display: none;" id="myDiv" class="animate-bottom">
       <canvas id="cnvs" width="250" height="250"></canvas>
-
-      <img id="img" src="./gktawu.png" alt="mim" />
     </div>
 
     <script>
@@ -187,13 +185,12 @@
         .then((data) => {
           var canvas = document.getElementById("cnvs");
           var ctx = canvas.getContext("2d");
-          var img = document.getElementById("img");
 
-          img.onload = function () {
+          var img = new Image();
+          img.addEventListener('load', function() {
             ctx.drawImage(img, 10, 10);
-          };
-
-          // ctx.drawImage(img, 10, 10);
+          }, false);
+          img.src = 'https://imgdb.jstnlt.my.id/img/gktawu.png';
 
           ctx.textBaseline = "middle";
           ctx.textAlign = "center";
