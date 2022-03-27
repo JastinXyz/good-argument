@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Nice argument</title>
+    <link rel="icon" href="./gktawu.png" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+
+      #img {
+        display: none;
+      }
+
+      canvas {
+        width: 100%;
+        height: 95vh;
+      }
+
+      /* Center the loader */
+      #loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        width: 120px;
+        height: 120px;
+        margin: -76px 0 0 -76px;
+      }
+
+      #text-loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 110vh;
+        text-align: center;
+        margin: 5em 10em 0 10em;
+      }
+      /* Add animation to "page content" */
+      .animate-bottom {
+        position: relative;
+        -webkit-animation-name: animatebottom;
+        -webkit-animation-duration: 1s;
+        animation-name: animatebottom;
+        animation-duration: 1s;
+      }
+
+      @-webkit-keyframes animatebottom {
+        from {
+          bottom: -100px;
+          opacity: 0;
+        }
+        to {
+          bottom: 0px;
+          opacity: 1;
+        }
+      }
+
+      @keyframes animatebottom {
+        from {
+          bottom: -100px;
+          opacity: 0;
+        }
+        to {
+          bottom: 0;
+          opacity: 1;
+        }
+      }
+
+      #myDiv {
+        display: none;
+        text-align: center;
+      }
+
+      .spinner {
+        animation: rotator 1.4s linear infinite;
+      }
+
+      @keyframes rotator {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(270deg);
+        }
+      }
+      .path {
+        stroke-dasharray: 187;
+        stroke-dashoffset: 0;
+        transform-origin: center;
+        animation: dash 1.4s ease-in-out infinite,
+          colors 5.6s ease-in-out infinite;
+      }
+
+      @keyframes colors {
+        0% {
+          stroke: #4285f4;
+        }
+        25% {
+          stroke: #de3e35;
+        }
+        50% {
+          stroke: #f7c223;
+        }
+        75% {
+          stroke: #1b9a59;
+        }
+        100% {
+          stroke: #4285f4;
+        }
+      }
+      @keyframes dash {
+        0% {
+          stroke-dashoffset: 187;
+        }
+        50% {
+          stroke-dashoffset: 46.75;
+          transform: rotate(135deg);
+        }
+        100% {
+          stroke-dashoffset: 187;
+          transform: rotate(450deg);
+        }
+      }
+    </style>
+  </head>
+  <body onload="myFunction()" style="margin: 0;">
+    <div id="loader">
+      <svg
+        class="spinner"
+        width="65px"
+        height="65px"
+        viewBox="0 0 66 66"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle
+          class="path"
+          fill="none"
+          stroke-width="6"
+          stroke-linecap="round"
+          cx="33"
+          cy="33"
+          r="30"
+        ></circle>
+      </svg>
+    </div>
+
+    <div id="text-loader">
+      <p>
+        <a
+          href="https://knowyourmeme.com/memes/nice-argument-unfortunately"
+          target="_blank"
+          >https://knowyourmeme.com/memes/nice-argument-unfortunately</a
+        >
+        <br />
+        We will not store ip and other information about you (which can be
+        obtained from ip) in our database (yes because this is 100% normal
+        static html website.)
+      </p>
+    </div>
+
+    <div style="display: none;" id="myDiv" class="animate-bottom">
+      <canvas id="cnvs" width="250" height="250"></canvas>
+
+      <img id="img" src="./gktawu.png" alt="mim" />
+    </div>
+
+    <script>
+      var myVar;
+
+      function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+      }
+
+      function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("text-loader").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+      }
+
+      fetch("https://ipinfo.io/json")
+        .then((res) => res.json())
+        .then((data) => {
+          var canvas = document.getElementById("cnvs");
+          var ctx = canvas.getContext("2d");
+          var img = document.getElementById("img");
+
+          img.onload = function () {
+            ctx.drawImage(img, 10, 10);
+          };
+
+          // ctx.drawImage(img, 10, 10);
+
+          ctx.textBaseline = "middle";
+          ctx.textAlign = "center";
+
+          ctx.font = "bold 24px 'Poppins', sans-serif";
+
+          ctx.strokeText("GOOD ARGUMENT", 250 / 2, 30);
+          ctx.strokeText(`UNFORTUNATELY,`, 250 / 2, 205);
+          ctx.strokeText(data.ip, 250 / 2, 235);
+        });
+    </script>
+  </body>
+</html>
