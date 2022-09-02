@@ -16,7 +16,7 @@ This website or this repository is for entertainment purposes only. We do not st
 </div>
 
 # Demo
-https://goodargument.withcoding.me
+https://jastinxyz.github.io/good-argument/
 
 # Instalation
 - Clone this repo to your local machine or any self hosted
