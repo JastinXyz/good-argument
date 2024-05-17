@@ -128,7 +128,7 @@
       }
     </style>
   </head>
-  <body onload="myFunction()" style="margin: 0;">
+  <body style="margin: 0;">
     <div id="loader">
       <svg
         class="spinner"
@@ -148,35 +148,14 @@
         ></circle>
       </svg>
     </div>
-
-    <div id="text-loader">
-      <p>
-        <a
-          href="https://knowyourmeme.com/memes/nice-argument-unfortunately"
-          target="_blank"
-          >https://knowyourmeme.com/memes/nice-argument-unfortunately</a
-        >
-        <br />
-        We will not store ip and other information about you (which can be
-        obtained from ip) in our database (yes because this is 100% normal
-        static html website.). You can see the <a href="https://github.com/JastinXyz/good-argument" target="_blank">SOURCE CODE</a>
-      </p>
-    </div>
-
+    
     <div style="display: none;" id="myDiv" class="animate-bottom">
       <canvas id="cnvs" width="250" height="250"></canvas>
     </div>
 
     <script>
-      var myVar;
-
-      function myFunction() {
-        myVar = setTimeout(showPage, 3000);
-      }
-
       function showPage() {
         document.getElementById("loader").style.display = "none";
-        document.getElementById("text-loader").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
       }
 
@@ -200,6 +179,7 @@
           ctx.strokeText("GOOD ARGUMENT", 250 / 2, 30);
           ctx.strokeText(`UNFORTUNATELY,`, 250 / 2, 205);
           ctx.strokeText(data.ip, 250 / 2, 235);
+          showPage()
         });
     </script>
   </body>
